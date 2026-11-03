@@ -1,3 +1,4 @@
+
 server:
   port: ${PORT:9630}
 
@@ -8,13 +9,13 @@ spring:
   datasource:
     url: ${DATABASE_URL:jdbc:mysql://localhost:3306/smart_attendance_db?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC}
     username: ${DATABASE_USERNAME:root}
-    password: ${DATABASE_PASSWORD:}
+    password: ${DATABASE_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: true
+    show-sql: false
     properties:
       hibernate:
         format_sql: true
@@ -24,19 +25,15 @@ spring:
       max-file-size: 200MB
       max-request-size: 500MB
 
-# JWT Config
 jwt:
-  secret: ${JWT_SECRET:koi_bhi_lambi_random_string_yaha_daalo123456}
+  secret: ${JWT_SECRET}
   expiration-ms: 86400000
 
-# Python AI Service URL
 ai-service:
   base-url: ${AI_SERVICE_URL:http://localhost:8000}
 
-# File storage paths
 file:
   upload-dir: ./uploads
 
-# Allowed frontend origin for CORS
 frontend:
   origin: ${FRONTEND_ORIGIN:http://localhost:3000}
